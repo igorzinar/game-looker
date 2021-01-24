@@ -29,7 +29,7 @@ font-family: 'Ubuntu', sans-serif;
     }
     h3{
         font-size:1.5rem;
-        padding: 1.5rem;
+        padding: 1.5rem 0rem;
         
     }
     p {
