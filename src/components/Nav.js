@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 // Animation
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import logo from '../img/logo.svg'
 
+// Redux and Routes
+import { useDispatch } from 'react-redux'
+import { Route } from 'react-router-dom'
+import { fetchSearch } from '../actions/gamesAction'
+
 const Nav = () => {
+  const dispatch = useDispatch()
+  const [textInput, setTextInput] = useState('')
+
+  const inputHandler = (e) => {
+    setTextInput(e.target.value)
+  }
+
+  const submitSearch = (e) => {
+    e.preventDefault()
+    dispatch(fetchSearch(textInput))
+    setTextInput('')
+  }
+  const clearSearched = () => {
+    dispatch({ type: 'CLEAR_SEARCHED' })
+  }
   return (
     <StyledNav>
       <Logo>
-        <img src={logo} alt="logo" />
+        <img onClick={clearSearched} src={logo} alt="logo" />
         <h1>Game Looker</h1>
-        <div className="search">
-          <input type="text" />
-          <button>Search</button>
-        </div>
+        <form className="search">
+          <input value={textInput} onChange={inputHandler} type="text" />
+          <button onClick={submitSearch}>Search</button>
+        </form>
       </Logo>
     </StyledNav>
   )
