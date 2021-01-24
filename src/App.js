@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // Components and pages
 import Home from './Pages/Home'
 import { Route } from 'react-router-dom'

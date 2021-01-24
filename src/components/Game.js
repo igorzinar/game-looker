@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux'
 import { loadDetail } from '../actions/detailAction'
 
 const Game = ({ name, image, release, id, imagePrev }) => {
+  const stringPathId = id.toString()
   // Load Detail Handler
 
   const dispatch = useDispatch()
@@ -21,11 +22,15 @@ const Game = ({ name, image, release, id, imagePrev }) => {
   }
 
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>Release date: {release}</p>
-        <img src={smallImage(image, 640)} alt={name} />
+        <motion.img
+          layoutId={`image ${stringPathId}`}
+          src={smallImage(image, 640)}
+          alt={name}
+        />
       </Link>
     </StyledGame>
   )

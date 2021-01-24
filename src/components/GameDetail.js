@@ -8,8 +8,9 @@ import { smallImage } from '../util'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-const GameDetail = () => {
+const GameDetail = ({ pathId }) => {
   const history = useHistory()
+  console.log(pathId)
   // Exit Detail
   const exitDetailHandler = (e) => {
     const element = e.target
@@ -25,10 +26,10 @@ const GameDetail = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
@@ -41,7 +42,8 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img
+              <motion.img
+                layoutId={`image ${pathId}`}
                 src={smallImage(game.background_image, 1280)}
                 alt={game.name}
               />
@@ -54,7 +56,7 @@ const GameDetail = () => {
                 <img
                   src={smallImage(screen.image, 1280)}
                   key={screen.id}
-                  alt="image"
+                  alt="screen_image"
                 />
               ))}
             </div>
