@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { loadGames, loadUpcomingGames } from '../actions/gamesAction'
-
+import { loadGames } from '../actions/gamesAction'
+import { loadDetail } from '../actions/detailAction'
 // Components
 import Game from '../components/Game'
+import GameDetail from '../components/GameDetail'
 
 // Styling and Animation
 import styled from 'styled-components'
@@ -18,12 +19,38 @@ const Home = () => {
   }, [dispatch])
   // Get data from redux state
   const { popular, newGames, upcoming } = useSelector((state) => state.games)
-  console.log(popular)
+
   return (
     <GameList>
+      <GameDetail />
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
+          <Game
+            // onClick={dispatch(loadDetail(game.id))}
+            name={game.name}
+            image={game.background_image}
+            release={game.released}
+            id={game.id}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>Popular Games</h2>
+      <Games>
+        {popular.map((game) => (
+          <Game
+            name={game.name}
+            image={game.background_image}
+            release={game.released}
+            id={game.id}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((game) => (
           <Game
             name={game.name}
             image={game.background_image}
@@ -38,14 +65,13 @@ const Home = () => {
 }
 
 const GameList = styled(motion.div)`
-  padding: 0rem 5rem;
+  padding: 0rem 5rem 2rem;
   h2 {
     padding: 5rem 0rem;
   }
 `
 
 const Games = styled(motion.div)`
-  color: #625b5b;
   min-height: 80vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
