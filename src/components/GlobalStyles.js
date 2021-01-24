@@ -20,30 +20,44 @@ html {
 
 body {
     
-font-family: 'Ubuntu', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
 
     h2 {
         font-size: 3rem;
         font-family: 'Abril Fatface', cursive;
         font-weight: 400;
     }
+
+
     h3{
         font-size:1.5rem;
         padding: 1.5rem 0rem;
         
     }
+
+
     p {
         font-size: 1.2rem;
         line-height:200%;
         color:#2bf1a8;
     }
+
+
     a {
         text-decoration: none;
         color:#333;
     }
-img {
-    display:block;
-}
+
+
+    img {
+        display:block;
+    }
+
+
+    input {
+        font-weight: 700;
+        font-family: 'Ubuntu', sans-serif;
+    }
 }
 `
 
