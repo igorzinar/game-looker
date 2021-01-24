@@ -41,6 +41,9 @@ font-family: 'Ubuntu', sans-serif;
         text-decoration: none;
         color:#333;
     }
+img {
+    display:block;
+}
 }
 `
 
