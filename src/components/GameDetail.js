@@ -59,9 +59,27 @@ const GameDetail = ({ pathId }) => {
         return gamepad
     }
   }
-  // Data
-  const { game, screen, isLoading } = useSelector((state) => state.detail)
 
+  // Get Store
+  const getStore = (data) => {
+    switch (data.store_id) {
+      case 1:
+        return 'Steam'
+      case 3:
+        return 'PlayStation'
+      case 5:
+        return 'GOOG'
+      case 11:
+        return 'EpicGame'
+      default:
+        return 'Web'
+    }
+  }
+  // Data
+  const { game, screen, isLoading, stores } = useSelector(
+    (state) => state.detail
+  )
+  console.log(stores)
   return (
     <>
       {!isLoading && (
@@ -82,6 +100,13 @@ const GameDetail = ({ pathId }) => {
                       key={data.platform.id}
                     ></img>
                   ))}
+                  {/* <div>
+                    {stores.map((data) => (
+                      <a key={data.id} href={data.url}>
+                        {getStore(data)}
+                      </a>
+                    ))}
+                  </div> */}
                 </Platforms>
               </Info>
             </Stats>
@@ -95,6 +120,18 @@ const GameDetail = ({ pathId }) => {
             <Description>
               <p>{game.description_raw}</p>
             </Description>
+            <Clip>
+              {game.clip && (
+                <video
+                  muted
+                  controls
+                  src={game.clip.clip}
+                  poster={game.clip.preview}
+                  onMouseOver={(event) => event.target.play()}
+                  onMouseOut={(event) => event.target.pause()}
+                ></video>
+              )}
+            </Clip>
             <div className="gallery">
               {screen.results.map((screen) => (
                 <img
@@ -179,5 +216,13 @@ const Media = styled(motion.div)`
 
 const Description = styled(motion.div)`
   margin: 5rem 0rem;
+`
+
+const Clip = styled(motion.div)`
+  video {
+    width: 100%;
+    &:hover {
+    }
+  }
 `
 export default GameDetail

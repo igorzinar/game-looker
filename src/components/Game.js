@@ -11,7 +11,7 @@ import { popup } from '../animations'
 import { useDispatch } from 'react-redux'
 import { loadDetail } from '../actions/detailAction'
 
-const Game = ({ name, image, release, id, imagePrev }) => {
+const Game = ({ name, image, release, id, imagePrev, platforms }) => {
   const stringPathId = id.toString()
   // Load Detail Handler
 
@@ -22,6 +22,9 @@ const Game = ({ name, image, release, id, imagePrev }) => {
     dispatch(loadDetail(id))
   }
 
+  // const platformName = platforms.map((data) => data.platform.name)
+  // const iconsPlatform = platformName.map((icon) => icon)
+  // console.log(iconsPlatform)
   return (
     <StyledGame
       variants={popup}
@@ -32,6 +35,15 @@ const Game = ({ name, image, release, id, imagePrev }) => {
     >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
+        {/* {platforms.platforms.map((platform) => (
+          <motion.img
+            className="platforms"
+            src={getPlatform(platform.platform.name)}
+            alt="icon"
+            key={platforms.name}
+          />
+        ))} */}
+
         <p>Release date: {release}</p>
         <motion.img
           layoutId={`image ${stringPathId}`}
@@ -53,6 +65,12 @@ const StyledGame = styled(motion.div)`
     width: 100%;
     height: 40vh;
     object-fit: cover;
+  }
+  .platforms {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+    margin: 0.5rem 1rem;
   }
 `
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import logo from '../img/logo.svg'
+import search from '../img/search.svg'
 import { fadeIn } from '../animations'
 
 // Redux and Routes
@@ -29,7 +30,7 @@ const Nav = () => {
   return (
     <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo>
-        <img onClick={clearSearched} src={logo} alt="logo" />
+        <img onClick={clearSearched} src={search} alt="logo" />
         <h1>Game Looker</h1>
         <form className="search">
           <input value={textInput} onChange={inputHandler} type="text" />
@@ -44,7 +45,7 @@ const StyledNav = styled(motion.div)`
   padding: 3rem 5rem;
   text-align: center;
   input {
-    width: 30%;
+    width: 50%;
     font-size: 1.5rem;
     padding: 0.5rem;
     border: none;
@@ -68,11 +69,13 @@ const StyledNav = styled(motion.div)`
 const Logo = styled(motion.div)`
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
   cursor: pointer;
   img {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
   }
 `
 export default Nav
