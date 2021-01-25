@@ -40,6 +40,7 @@ body {
         font-size: 1.2rem;
         line-height:200%;
         color:#2bf1a8;
+       
     }
 
 

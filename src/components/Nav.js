@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 // Animation
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import logo from '../img/logo.svg'
+
 import search from '../img/search.svg'
 import { fadeIn } from '../animations'
 
 // Redux and Routes
 import { useDispatch } from 'react-redux'
-import { Route } from 'react-router-dom'
+
 import { fetchSearch } from '../actions/gamesAction'
 
 const Nav = () => {

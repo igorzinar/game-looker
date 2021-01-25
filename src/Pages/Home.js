@@ -106,6 +106,7 @@ const GameList = styled(motion.div)`
   }
   @media (max-width: 750px) {
     text-align: center;
+    padding: 0rem 2rem 1rem;
   }
   @media (max-width: 350px) {
     text-align: center;
@@ -127,7 +128,7 @@ const Games = styled(motion.div)`
     grid-row-gap: 3rem;
   }
   @media (max-width: 450px) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 `
 export default Home

@@ -19,7 +19,7 @@ import starFull from '../img/star-full.png'
 
 const GameDetail = ({ pathId }) => {
   const history = useHistory()
-  console.log(pathId)
+
   // Exit Detail
   const exitDetailHandler = (e) => {
     const element = e.target
@@ -61,25 +61,23 @@ const GameDetail = ({ pathId }) => {
   }
 
   // Get Store
-  const getStore = (data) => {
-    switch (data.store_id) {
-      case 1:
-        return 'Steam'
-      case 3:
-        return 'PlayStation'
-      case 5:
-        return 'GOOG'
-      case 11:
-        return 'EpicGame'
-      default:
-        return 'Web'
-    }
-  }
+  // const getStore = (data) => {
+  //   switch (data.store_id) {
+  //     case 1:
+  //       return 'Steam'
+  //     case 3:
+  //       return 'PlayStation'
+  //     case 5:
+  //       return 'GOOG'
+  //     case 11:
+  //       return 'EpicGame'
+  //     default:
+  //       return 'Web'
+  //   }
+  // }
   // Data
-  const { game, screen, isLoading, stores } = useSelector(
-    (state) => state.detail
-  )
-  console.log(stores)
+  const { game, screen, isLoading } = useSelector((state) => state.detail)
+
   return (
     <>
       {!isLoading && (
@@ -96,6 +94,7 @@ const GameDetail = ({ pathId }) => {
                 <Platforms>
                   {game.platforms.map((data) => (
                     <img
+                      alt={data.platform.name}
                       src={getPlatform(data.platform.name)}
                       key={data.platform.id}
                     ></img>
@@ -187,6 +186,9 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
   }
+  @media (max-width: 750px) {
+    padding: 1rem 1rem;
+  }
 `
 
 const Stats = styled(motion.div)`
@@ -253,10 +255,9 @@ const Description = styled(motion.div)`
 `
 
 const Clip = styled(motion.div)`
+  width: 100%;
   video {
     width: 100%;
-    &:hover {
-    }
   }
 `
 export default GameDetail
