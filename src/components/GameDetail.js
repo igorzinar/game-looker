@@ -152,6 +152,7 @@ const CardShadow = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
+
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -166,6 +167,10 @@ const CardShadow = styled(motion.div)`
   }
   &::-webkit-scrollbar-track {
     background: #fae2e2;
+  }
+
+  @media (max-width: 500px) {
+    overflow-x: hidden;
   }
 `
 
@@ -193,6 +198,30 @@ const Stats = styled(motion.div)`
     height: 2rem;
     display: inline;
   }
+  @media (max-width: 850px) {
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+    img {
+      margin: 0.5rem;
+    }
+  }
 `
 
 const Info = styled(motion.div)`
@@ -204,7 +233,12 @@ const Platforms = styled(motion.div)`
   justify-content: space-evenly;
 
   img {
-    margin-left: 3rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 900px) {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `
 const Media = styled(motion.div)`

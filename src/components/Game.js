@@ -35,14 +35,6 @@ const Game = ({ name, image, release, id, imagePrev, platforms }) => {
     >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
-        {/* {platforms.platforms.map((platform) => (
-          <motion.img
-            className="platforms"
-            src={getPlatform(platform.platform.name)}
-            alt="icon"
-            key={platforms.name}
-          />
-        ))} */}
 
         <p>Release date: {release}</p>
         <motion.img
@@ -66,11 +58,11 @@ const StyledGame = styled(motion.div)`
     height: 40vh;
     object-fit: cover;
   }
-  .platforms {
-    width: 2rem;
-    height: 2rem;
-    display: inline;
-    margin: 0.5rem 1rem;
+  @media (max-width: 450px) {
+    text-align: center;
+    p {
+      font-size: 1rem;
+    }
   }
 `
 
