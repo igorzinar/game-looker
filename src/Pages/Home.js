@@ -54,6 +54,19 @@ const Home = () => {
         ) : (
           ''
         )}
+        <h2>Popular Games</h2>
+        <Games>
+          {popular.map((game) => (
+            <Game
+              name={game.name}
+              image={game.background_image}
+              release={game.released}
+              id={game.id}
+              key={game.id}
+              platforms={game}
+            />
+          ))}
+        </Games>
         <h2>Upcoming Games</h2>
         <Games>
           {upcoming.map((game) => (
@@ -68,19 +81,7 @@ const Home = () => {
             />
           ))}
         </Games>
-        <h2>Popular Games</h2>
-        <Games>
-          {popular.map((game) => (
-            <Game
-              name={game.name}
-              image={game.background_image}
-              release={game.released}
-              id={game.id}
-              key={game.id}
-              platforms={game}
-            />
-          ))}
-        </Games>
+
         <h2>New Games</h2>
         <Games>
           {newGames.map((game) => (
@@ -103,6 +104,7 @@ const GameList = styled(motion.div)`
   padding: 0rem 5rem 2rem;
   h2 {
     padding: 5rem 0rem;
+    color: #c7c7c7;
   }
   @media (max-width: 750px) {
     text-align: center;

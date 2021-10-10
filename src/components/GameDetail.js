@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { smallImage } from '../util'
 // Redux
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import playstation from '../img/playstation.svg'
 import xbox from '../img/xbox.svg'
 import nintendo from '../img/nintendo.svg'
@@ -77,7 +77,6 @@ const GameDetail = ({ pathId }) => {
   // }
   // Data
   const { game, screen, isLoading } = useSelector((state) => state.detail)
-
   return (
     <>
       {!isLoading && (
@@ -85,7 +84,9 @@ const GameDetail = ({ pathId }) => {
           <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
+                <motion.h3 layoutId={`title ${pathId}`}>
+                  {game?.website !== "" ?
+                    <a href={game.website} target="_blank" >{game.name}</a> : game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
                 {getStars()}
               </div>

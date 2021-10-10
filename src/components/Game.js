@@ -48,7 +48,7 @@ const Game = ({ name, image, release, id, imagePrev, platforms }) => {
 }
 const StyledGame = styled(motion.div)`
   min-height: 30vh;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 15px 5px 20px rgba(255, 255, 255, 0.2);
   text-align: center;
   border-radius: 1rem;
   cursor: pointer;
@@ -57,6 +57,9 @@ const StyledGame = styled(motion.div)`
     width: 100%;
     height: 40vh;
     object-fit: cover;
+  }
+  h3 {
+    color: #c7c7c7;
   }
   @media (max-width: 450px) {
     text-align: center;

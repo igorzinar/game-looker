@@ -52,6 +52,7 @@ const StyledNav = styled(motion.div)`
     font-size: 1.5rem;
     padding: 0.5rem;
     border: none;
+    border-radius: 10px;
     margin-top: 1rem;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     outline: none;
@@ -69,6 +70,11 @@ const StyledNav = styled(motion.div)`
     border-radius: 5px;
     margin-left: 1rem;
     color: #fff;
+    transition: all 1s;
+    &:hover {
+      background: #fff;
+      color: #5555fa;
+    }
     @media (max-width: 450px) {
       margin-top: 1rem;
       margin: 1rem 0;
